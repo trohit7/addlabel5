@@ -1,0 +1,45 @@
+apiVersion: security.cerebrum.juniper.net/v1
+kind: SecureGateway
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"security.cerebrum.juniper.net/v1","kind":"SecureGateway","metadata":{"annotations":{},"name":"demo1","namespace":"default"},"spec":{"provider":"csrx","serviceChainType":"host-based-routing-inline","services":[{"config":{"authenticationAlgorithm":"sha-256","encryptionAlgorithm":"aes-256-cbc","gateway":"171.1.1.1","localAddress":"181.1.1.1","preSharedKey":"$9$zt3l3AuIRhev8FnNVsYoaApu0RcSyev8XO1NVYoDj.P5F9AyrKv8X","trafficSelectors":[{"localIP":"111.1.0.0/16","name":"ts1","remoteIP":"222.1.0.0/16"}]},"interfaceConfigs":[{"ipv4Address":"181.1.1.1/32","ipv4Gateway":"181.1.1.2","macAddress":"aa:bb:cc:dd:01:24","name":"eth1","networkName":"net-untrust","type":"vhost"},{"ipv4Address":"1.21.1.1/30","ipv4Gateway":"1.21.1.2","macAddress":"aa:bb:cc:dd:01:22","name":"eth2","networkName":"net-trust","routes":["222.1.0.0/16"],"type":"vhost"}],"networks":[{"name":"net-trust"},{"name":"net-untrust"}],"type":"ipsec-service"}]}}
+  creationTimestamp: "2024-02-29T04:52:10Z"
+  labels:
+    author: rohit
+    operation: UPDATE
+  name: demo1
+  namespace: default
+spec:
+  provider: csrx
+  serviceChainType: host-based-routing-inline
+  services:
+  - config:
+      authenticationAlgorithm: sha-256
+      encryptionAlgorithm: aes-256-cbc
+      gateway: 171.1.1.1
+      localAddress: 181.1.1.1
+      preSharedKey: $9$zt3l3AuIRhev8FnNVsYoaApu0RcSyev8XO1NVYoDj.P5F9AyrKv8X
+      trafficSelectors:
+      - localIP: 111.1.0.0/16
+        name: ts1
+        remoteIP: 222.1.0.0/16
+    interfaceConfigs:
+    - ipv4Address: 181.1.1.1/32
+      ipv4Gateway: 181.1.1.2
+      macAddress: aa:bb:cc:dd:01:24
+      name: eth1
+      networkName: net-untrust
+      type: vhost
+    - ipv4Address: 1.21.1.1/30
+      ipv4Gateway: 1.21.1.2
+      macAddress: aa:bb:cc:dd:01:22
+      name: eth2
+      networkName: net-trust
+      routes:
+      - 222.1.0.0/16
+      type: vhost
+    networks:
+    - name: net-trust
+    - name: net-untrust
+    type: ipsec-service

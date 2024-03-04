@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"webhook","app.kubernetes.io/created-by":"cerebrum","app.kubernetes.io/instance":"webhook-service","app.kubernetes.io/managed-by":"kustomize","app.kubernetes.io/name":"service","app.kubernetes.io/part-of":"cerebrum"},"name":"cerebrum-webhook-service","namespace":"cerebrum-system"},"spec":{"ports":[{"port":443,"protocol":"TCP","targetPort":9443}],"selector":{"control-plane":"controller-manager"}}}
+  creationTimestamp: "2024-02-12T11:59:01Z"
+  labels:
+    app.kubernetes.io/component: webhook
+    app.kubernetes.io/created-by: cerebrum
+    app.kubernetes.io/instance: webhook-service
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: service
+    app.kubernetes.io/part-of: cerebrum
+  name: cerebrum-webhook-service
+  namespace: cerebrum-system
+spec:
+  clusterIP: 10.101.240.134
+  clusterIPs:
+  - 10.101.240.134
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 443
+    protocol: TCP
+    targetPort: 9443
+  selector:
+    control-plane: controller-manager
+  sessionAffinity: None
+  type: ClusterIP
